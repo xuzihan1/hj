@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            user-select: none;
+        }
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .header{
+            width: 100%;
+            height: 6%;
+            background:#A593E0;
+        }
+        .body{
+            width: 100%;
+            height: 90%;
+            background: yellowgreen;
+            overflow: hidden;
+        }
+        
+        .sider{
+            width: 15%;
+            height: 100%;
+            float: left;
+            background: #566270;
+            /* #566270; */
+        }
+        .sider > wrapper{
+            width: 100%;
+            height: 100%;
+        }
+        iframe{
+            width: 85%;
+            height: 100%;
+            float: left;
+            background: #E0E3DA;
+        }
+        ul li{
+            background: transparent;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 15px;
+            color: white;
+        }
+        .son{
+            padding-left: 65px;
+        }
+        ul li:hover{
+            background: #6594c9;
+        }
+        .footer{
+            width: 100%;
+            height: 4%;
+            background: black;
+        }
+
+        ul li span{
+            
+            display: inline-block;
+            width: 35px;
+            font-size: 18px;
+            font-weight: 700;
+            height: 100%;
+        }
+
+        .son{
+            font-size: 14px;
+            font-weight: 300;
+        }
+        .root{
+            color: #A593E0;
+            background:rgba(66,81,100,1);
+        }
+        .active{
+            color: rgb(143, 128, 192);
+            background:rgba(66,81,100,0.5);
+        }
+        h1{
+            font-size: 16px;
+            margin-top: 16px;
+        }
+        .row .col-md-5 h1{
+            font-size: 16px;
+            color: #FFFFF3;
+            margin-top: 16px;
+        }
+        .row .col-md-7 h1{
+            color: white;
+            font-weight: 700;
+        }
+        .row a{
+            text-decoration: none;
+            margin-left: 15px;
+            color: #FFFFF3;
+        }
+        .row a:hover{
+            color: black;
+        }
+        .login::after{
+            content: '';
+            height: 100%;
+            border: 1px solid  #FFFFF3;
+            margin: 35px;
+        }
+        .container{
+            margin-right: 0%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+       
+        
+    </style>
+     <style>
+     /* //地图style */
+     .wrapper1 {
+            width: 100%;
+            height: 100%;
+            background: url(image/4.jpg) no-repeat center center !important;
+            background-attachment: fixed !important;
+            background-size: cover !important;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .mainLeft {
+            width: 35%;
+            height: 100%;
+            /* background: greenyellow; */
+            float: left;
+        }
+
+        .mainMap {
+            width: 35%;
+            height: 50%;
+            position: relative;
+            /* background-image: url('./image/22.png');
+    background-size:122%; 
+    background-position:-110px 22px ; */
+            background: url(image/22.png);
+            background-size: 70%;
+            background-position: 70px 40px;
+            float: left;
+        }
+
+        .mainRight {
+            width: 30%;
+            height: 50%;
+            /* background: red; */
+            float: right;
+        }
+
+        .mainFoot {
+            width: 65%;
+            height: 50%;
+            /* background: purple; */
+            float: right;
+            overflow: hidden;
+            /* border: 1px; */
+            border: 2px solid #54455c;
+            box-sizing: border-box;
+        }
+
+        .footWrapper {
+            width: 100%;
+            height: 20%;
+        }
+
+        .footMain {
+            height: 80%;
+            width: 100%;
+        }
+
+        /* span 的内部表格 */
+        .table {
+            width: 11%;
+            height: 100%;
+            background: rgb(15, 36, 57, .8);
+            float: left;
+            text-align: center;
+            font-size: 13.4px;
+            color: white;
+            font-weight: 469;
+            border: 1px solid #56dbff;
+            border-bottom: 1px solid gray;
+        }
+
+        .th {
+            width: 100%;
+            height: 33%;
+            display: table;
+            background: #20cafb;
+        }
+
+        .td {
+            width: 100%;
+            height: 33%;
+            text-align: left;
+            display: table;
+            border-top: 1px solid gray;
+            font-size: 12.6px;
+        }
+
+        span {
+            display: table-cell;
+            vertical-align: middle;
+            margin-right: 0px;
+            /* margin: auto 0 auto auto; */
+        }
+
+        .right {
+            color: #f4f957;
+            font-weight: 536;
+        }
+
+        .frist .th {
+            background: rgb(18, 208, 255);
+        }
+
+        .frist {
+            background: rgba(14, 142, 207, .5);
+            margin-right: 3px;
+        }
+
+        /* 地图标题的实现 */
+        .title {
+            position: absolute;
+            background: #0096d4;
+            height: 20px;
+        }
+
+        .title span {
+            color: white;
+            /* line-height: 20px; */
+            font-size: 13.4px;
+            font-weight: 469;
+        }
+
+
+        .pie,
+        .bar,
+        .Line1,
+        .Line2 {
+            height: 25%;
+        }
+
+        .pie {
+            /* background: yellowgreen; */
+        }
+
+        .pieView {
+            width: 100%;
+            height: 70%;
+        }
+
+        /* 第一个饼图的下方块实现 */
+        .pieAdded {
+            height: 30%;
+            width: 100%;
+            position: relative;
+        }
+
+        .added1 {
+            display: inline-block;
+            width: 30%;
+            height: 60%;
+            background: rgb(3, 241, 254);
+            position: absolute;
+            transform: translate(0, -50%);
+            top: 50%;
+            left: 50%;
+            margin-left: 5px;
+            border-radius: 5.36px;
+            padding-right: 3.35px;
+            padding-bottom: 3px;
+        }
+
+        .added2 {
+            display: inline-block;
+            width: 30%;
+            height: 60%;
+            background: rgb(255, 205, 255);
+            position: absolute;
+            transform: translate(0, -50%);
+            top: 50%;
+            right: 50%;
+            margin-right: 5px;
+            border-radius: 5.36px;
+            padding-right: 3.35px;
+            padding-bottom: 3px;
+        }
+
+        .value {
+            display: block;
+            height: 60%;
+            width: 100%;
+            text-align: right;
+            font-size: 16.7px;
+            font-weight: 700;
+        }
+
+        .infor {
+            display: block;
+            height: 40%;
+            width: 100%;
+            font-size: 8px;
+            text-align: right;
+            font-weight: 700;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        #pie1,
+        #pie2 {
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
+
+        /* 加入地图style */
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #wrapper {
+            background: url(image/.jpg) center center no-repeat;
+        }
+
+        .cls-3hover {
+            fill: #0badf8 !important;
+        }
+
+        .cls-3 {
+            cursor: pointer;
+        }
+
+        polygon,
+        rect {
+            cursor: n-resize;
+        }         
+     </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 text-left"><h1>郑州市惠济区农村微小权力信息公开平台</h1></div>
+                <div class="col-md-5 text-right"><h1><span class="glyphicon glyphicon-user"></span><a href="" class="login">admin1</a> <span class="glyphicon glyphicon-off"></span><a href="" class="signDown">退出</a></h1></div>
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="sider">
+                    <ul>
+                            <li class="hjOverView root"><span class="glyphicon glyphicon-home"></span>惠济区总览</li>
+                            <li class="hjMap son ">反馈汇总地图</li>
+                            <li class="hjDetails son">反馈处理详情</li>
+                            <li class="hjDealOverView son">反馈处理总览</li>
+                            <li class="online root"><span class="glyphicon glyphicon-signal"></span>在线信息</li>
+                            <li class="olOverView son">在线总览</li>
+                            <li class="olRealTime son">实时在线人数总览</li>
+                            <li class="civil root"><span class="glyphicon glyphicon-heart"></span>民政信息</li>
+                            <li class="moneyInfo son">资金信息</li>
+                            <li class="civilInfo son">党员信息</li>
+                            <li class="other root"><span class="glyphicon glyphicon-calendar"></span>历史访问人数</li>
+                    </ul>
+            
+        </div>
+        <iframe src="hjOverView.html" frameborder="0"></iframe>
+        
+    </div>
+    <div class="footer"></div>
+</body>
+    <script>
+        var classAtt = [];
+        function initSider(){
+            var sonAtt = document.getElementsByClassName('son')
+            for(var x = 0; x < sonAtt.length; x ++){
+                !function(a){
+                    sonAtt[x].onclick = function(){
+                        if(classAtt.length != 2){
+                            classAtt.push(this.className, a)
+                        }else{
+                            sonAtt[classAtt[1]].className = classAtt[0]
+                            classAtt = []
+                            classAtt.push(this.className, a)
+                        }
+                        this.className += ' active'
+                        console.log(classAtt)
+                    }
+                }(x)
+            }
+        }
+        initSider()
+    </script>
+    <script>
+        
+            var hjOverView = document.getElementsByClassName('hjOverView')[0],
+                hjMap = document.getElementsByClassName('hjMap')[0],
+                hjDealOverView = document.getElementsByClassName('hjDealOverView')[0],
+                hjDetails = document.getElementsByClassName('hjDetails')[0]
+            var online = document.getElementsByClassName('online')[0],
+                olOverView = document.getElementsByClassName('olOverView')[0],
+                olRealTime = document.getElementsByClassName('olRealTime')[0]
+            var civil = document.getElementsByClassName('civil')[0],
+                moneyInfo = document.getElementsByClassName('moneyInfo')[0],
+                civilInfo = document.getElementsByClassName('civilInfo')[0]
+            var other = document.getElementsByClassName('other')[0]
+            var main = document.getElementsByTagName('iframe')[0]
+            
+            function initEvent(){
+                hjOverView.addEventListener('click', hjOverViewEvent)
+                hjMap.addEventListener('click', hjMapEvent)
+                hjDealOverView.addEventListener('click', hjDealOverViewEvent)
+                hjDetails.addEventListener('click', hjDetailsEvent)
+                online.addEventListener('click', onlineEvent)
+                olOverView.addEventListener('click', olOverViewEvent)
+                olRealTime.addEventListener('click', olRealTimeEvent)
+                civil.addEventListener('click', civilEvent)
+                moneyInfo.addEventListener('click', moneyInfoEvent)
+                civilInfo.addEventListener('click', civilInfoEvent)
+                other.addEventListener('click', otherEvent)
+
+                function hjOverViewEvent(){
+                    main.setAttribute('src', 'hjOverView.html')
+                }
+                function hjMapEvent(){
+                    main.setAttribute('src', 'hjMap.html')
+                }
+                function hjDealOverViewEvent(){
+                    main.setAttribute('src', 'hjDealOverView.html')
+                }
+                function hjDetailsEvent(){
+                    main.setAttribute('src', 'hjDetails.html')
+                }
+                function onlineEvent(){
+                    main.setAttribute('src', 'olline.html')
+                }
+                function olOverViewEvent(){
+                    main.setAttribute('src', 'olOverView.html')
+                }
+                function olRealTimeEvent(){
+                    main.setAttribute('src', 'olRealTime.html')
+                }
+                function civilEvent(){
+                    main.setAttribute('src', 'civil.html')
+                }
+                function moneyInfoEvent(){
+                    main.setAttribute('src', 'moneyInfo.html')
+                }
+                function civilInfoEvent(){
+                    main.setAttribute('src', 'civilInfo.html')
+                }
+                function otherEvent(){
+                    main.setAttribute('src', 'other.html')
+                }
+            }
+            initEvent()
+    </script>
+</html>

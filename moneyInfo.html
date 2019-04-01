@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .left{
+            float: left;
+            height: 80%;
+            margin: 5%;
+            margin-top: 3%;
+        }
+        .left{
+            width: 80%;
+        }
+        
+        .leftDom{
+            width: 100%;
+            height: 100%;
+            margin: 50px;
+            border-radius: 5%;
+            background: white;
+        }
+        
+
+   
+    </style>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript"
+        src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <!-- <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script> -->
+    <script type="text/javascript"
+        src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+</head>
+<body>
+    <div class="left">
+        <div class="leftDom">
+            <!-- <div class="dom_content"></div> -->
+        </div>
+    </div>
+    <div class="right">
+            <div class="rightDom">
+                    <!-- <div class="dom_content"></div> -->
+                </div>
+    </div>
+</body>
+<script>
+    var leftDom = document.getElementsByClassName('leftDom')[0],
+        rightDom = document.getElementsByClassName('rightDom')[0]
+        moneyInfo()
+        
+        function moneyInfo(){
+            var myChart = echarts.init(leftDom);
+                    var app = {};
+                    option = null;
+                    // Generate data
+                    // Generate data
+                    var category = [];
+                    var dottedBase = +new Date();
+                    var lineData = [];
+                    var barData = [];
+
+                    for (var i = 0; i < 8; i++) {
+                        var date = new Date(dottedBase += 3600 * 24 * 1000);
+                        var b = (Math.random() * 200).toFixed(2);
+                        var d = (Math.random() * 200).toFixed(2);
+                        barData.push(b);
+                        lineData.push((parseFloat(d) + parseFloat(b)).toFixed(2));
+                    }
+                    category.push('')
+
+                    // option
+                    option = {
+                        // backgroundColor: '#0f375f',
+                        title: {
+                            text: '资金信息',
+                            textAlign:'center',
+                            left: '50%'
+                        },
+                        grid: {
+                            left: 70,
+                            bottom: 70,
+                            height: '90%',
+                            width: '90%'
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow'
+                            }
+                        },
+                        legend: {
+                            data: ['收入', '支出'],
+                            textStyle: {
+                                color: 'black',
+                                fontSize: 13.4,
+                                fontWeight: 3.35
+                            },
+                            orient: 'vertical',
+                            itemWidth: 25,
+                            itemHeight: 10,
+                            top: 33,
+                            right: 2
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: ['迎宾路', '新城', '长兴路', '大河路', '古荥镇', '老鸭陈', '刘寨', '花园口', ''],
+                            axisLabel: {
+                                rotate: 0,
+                                interval: 0,
+                                color: 'black',
+                                fontSize: 14
+                            },
+                        },
+                        yAxis: {
+                            splitLine: {
+                                lineStyle: {
+                                    color: '#dbdbdb',
+                                    type: 'solid'
+                                }
+                            },
+                            boundaryGap: [0, 0.3],
+                            axisLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                color: 'black',
+                                fontSize: 14
+                            },
+                            show: true,
+                            type: 'value'
+                        },
+                        series: [{
+                            type: 'bar',
+                            name: '收入',
+                            barWidth: 15,
+                            itemStyle: {
+                                normal: {
+                                    barBorderRadius: 3,
+                                    color: '#FF00CC',
+                                    // label:{
+                                    //     show: true,
+                                    //     position: 'top'
+                                    // },
+                                    // textStyle:{
+                                    //     color: 'white'
+                                    // }
+                                }
+                            },
+                            data: barData
+                        }, {
+                            name: '支出',
+                            type: 'bar',
+
+                            barWidth: 15,
+                            itemStyle: {
+                                normal: {
+                                    barBorderRadius: 3,
+                                    color: '#4bf2ff'
+                                }
+                            },
+                            data: lineData
+                        }]
+                    };
+
+                    if (option && typeof option === "object") {
+                        myChart.setOption(option, true);
+                    }
+        }
+        function civilInfo(){
+            var myChart = echarts.init(rightDom);
+                    var app = {};
+                    option = null;
+                    var posList = [
+                        'left', 'right', 'top', 'bottom',
+                        'inside',
+                        'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
+                        'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
+                    ];
+
+                    app.configParameters = {
+                        rotate: {
+                            min: -90,
+                            max: 90
+                        },
+                        align: {
+                            options: {
+                                left: 'left',
+                                center: 'center',
+                                right: 'right'
+                            }
+                        },
+                        verticalAlign: {
+                            options: {
+                                top: 'top',
+                                middle: 'middle',
+                                bottom: 'bottom'
+                            }
+                        },
+                        position: {
+                            options: echarts.util.reduce(posList, function (map, pos) {
+                                map[pos] = pos;
+                                return map;
+                            }, {})
+                        },
+                        distance: {
+                            min: 0,
+                            max: 100
+                        }
+                    };
+
+                    app.config = {
+                        rotate: 90,
+                        align: 'left',
+                        verticalAlign: 'middle',
+                        position: 'insideBottom',
+                        distance: 15,
+                        onChange: function () {
+                            var labelOption = {
+                                normal: {
+                                    rotate: app.config.rotate,
+                                    align: app.config.align,
+                                    verticalAlign: app.config.verticalAlign,
+                                    position: app.config.position,
+                                    distance: app.config.distance
+                                }
+                            };
+                            myChart.setOption({
+                                series: [{
+                                    label: labelOption
+                                }, {
+                                    label: labelOption
+                                }, {
+                                    label: labelOption
+                                }, {
+                                    label: labelOption
+                                }]
+                            });
+                        }
+                    };
+
+
+                    var labelOption = {
+                        normal: {
+                            show: true,
+                            position: app.config.position,
+                            distance: app.config.distance,
+                            align: app.config.align,
+                            verticalAlign: app.config.verticalAlign,
+                            rotate: app.config.rotate,
+                            formatter: '{c}',//'{c}  {name|{a}}'
+                            fontSize: 10,
+                            rich: {
+                                name: {
+                                    textBorderColor: 'white'
+                                }
+                            }
+                        }
+                    };
+
+                    option = {
+                        // backgroundColor: 'gray',
+                        color: ['#53c39d', '#17d5f9', '#389fe1', '#fa748d'],
+                        title: {
+                            text: '行政区党员信息总览',
+                            backgroundColor: '#0096d4',
+                            textStyle: {
+                                color: 'white',
+                                fontSize: 12.5,
+                                fontWeight: 700
+                            },
+                            padding: [4, 3, 3, 2],
+                            left: 0,
+                            top: 0
+                        },
+                        grid: {
+                            left: '2%',
+                            top: '20%',
+                            bottom: '3%',
+                            containLabel: true,
+                            width: '93%'
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow'
+                            }
+                        },
+                        legend: {
+                            show: true,
+                            itemHeight: 10,
+                            itemWidth: 13,
+                            itemGap: 3,
+                            data: ['党员', '积极分子', '转正', '发展'],
+                            textStyle: {
+                                fontSize: 9,
+                                color: 'white'
+                            }
+                        },
+                       
+                        calculable: true,
+                        xAxis: [
+                            {
+                                type: 'category',
+                                axisTick: { show: false },
+                                axisLine: {
+                                    lineStyle: {
+                                        color: 'white'
+                                    }
+                                },
+                                axisLabel: {
+                                    color: 'white',
+                                    fontSize: 9
+                                },
+                                data: ['迎宾路', '新城', '长兴路', '大河路', '古荥镇', '老鸭陈', '刘寨', '花园口']
+                            }
+                        ],
+                        yAxis: {
+                            splitLine: {
+                                lineStyle: {
+                                    color: 'white',
+                                    type: 'solid'
+                                }
+                            },
+                            boundaryGap: [0, 0.01],
+                            axisLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                color: 'white',
+                                fontSize: 9
+                            },
+                            show: true,
+                            type: 'value'
+                        },
+                        series: [
+                            {
+                                name: '党员',
+                                type: 'bar',
+                                barGap: 0,
+                                label: labelOption,
+                                data: [320, 332, 301, 334, 390, 300, 330, 300]
+                            },
+                            {
+                                name: '积极分子',
+                                type: 'bar',
+                                label: labelOption,
+                                data: [220, 182, 191, 234, 290, 230, 254, 180]
+                            },
+                            {
+                                name: '转正',
+                                type: 'bar',
+                                label: labelOption,
+                                data: [150, 232, 201, 154, 190, 150, 160, 130]
+                            },
+                            {
+                                name: '发展',
+                                type: 'bar',
+                                label: labelOption,
+                                data: [98, 77, 101, 99, 40, 45, 56, 45]
+                            }
+                        ]
+                    };
+                    if (option && typeof option === "object") {
+                        myChart.setOption(option, true);
+                    }
+        }
+</script>
+</html>

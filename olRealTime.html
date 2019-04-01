@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .right{
+            float: left;
+            height: 80%;
+            margin: 5%;
+            margin-top: 3%;
+        }
+        
+        .right{
+            width: 80%;
+        }
+        .rightDom{
+            width: 100%;
+            height: 100%;
+            margin: 50px;
+            border-radius: 5%;
+            background: white;
+        }
+
+   
+    </style>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript"
+        src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <!-- <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script> -->
+    <script type="text/javascript"
+        src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+</head>
+<body>
+    <div class="left">
+        <div class="leftDom">
+            <!-- <div class="dom_content"></div> -->
+        </div>
+    </div>
+    <div class="right">
+            <div class="rightDom">
+                    <!-- <div class="dom_content"></div> -->
+                </div>
+    </div>
+</body>
+<script>
+    var leftDom = document.getElementsByClassName('leftDom')[0],
+        rightDom = document.getElementsByClassName('rightDom')[0]
+        olRealTime()
+
+       
+        function olRealTime(){
+            var myChart = echarts.init(rightDom);
+                    var app = {};
+                    var time = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']
+                    option = null;
+                    option = {
+                        title: {
+                            text: '当前在线人数',
+                            textAlign:'center',
+                            left: '50%'
+                        },
+                        grid: {
+                            left: '2%',
+                            top: '20%',
+                            bottom: '3%',
+                            containLabel: true,
+                            borderWidth: '1',
+                            borderColor: '#ccc',
+                            width: '92%'
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'cross',
+                                label: {
+                                    backgroundColor: '#6a7985'
+                                }
+                            }
+                        },
+                        xAxis: {
+                            name: '时',
+                            type: 'category',
+                            boundaryGap: false,
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#412c57'
+                                }
+                            },
+                            axisLabel: {
+                                interval: 0,
+                                color: 'black',
+                                fontSize: 14
+                            },
+                            splitLine: {
+                                show: true,
+                                lineStyle: {
+                                    color: '#412c57'
+                                }
+                            },
+                            data: time
+                        },
+                        yAxis: {
+                            type: 'value',
+                            min: 0,
+                            max: 1500,
+                            splitNumber: 3,
+                            splitLine: {
+                                show: true,
+                                color: 'black'
+                            },
+                            axisLabel: {
+                                color: 'black',
+                                fontSize: 14
+                            },
+                        },
+                        series: [{
+                            name: '在线人数',
+                            data: [820, 932, 901, 934, 1290, 1330, 1320, 1235, 855, 655, 785, 1100, 1324, 1234, 456, 547, 1340, 456, 400, 855, 100, 56, 30, 20],
+                            type: 'line',
+                            symbol: 'circle',
+                            symbolSize: 8,
+                            lineStyle: {
+                                color: '#1da5bf'
+                            },
+                            areaStyle: {
+                                color: 'rgba(23,213,249,.9)'
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: '#29c2ad',
+                                    label: {
+                                        show: true,
+                                        textStyle: {
+                                            color: '#17d5f9',
+                                            fontSize: '10',
+                                            fontFamily: '微软雅黑',
+                                            fontWeight: 700
+                                        }
+                                    }
+                                }
+                            }
+
+                        }]
+                    };
+                    if (option && typeof option === "object") {
+                        myChart.setOption(option, true);
+                    }
+        }
+   
+         
+</script>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .left{
+            float: left;
+            height: 80%;
+            margin: 5%;
+            margin-top: 3%;
+        }
+        .left{
+            width: 80%;
+        }
+        .leftDom{
+            width: 100%;
+            height: 100%;
+            margin: 50px;
+            border-radius: 5%;
+            background: white;
+        }
+        .rightDom{
+            width: 100%;
+            height: 100%;
+            margin: 50px;
+            border-radius: 5%;
+            background: white;
+        }
+
+   
+    </style>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+    <script type="text/javascript"
+        src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+    <!-- <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script> -->
+    <script type="text/javascript"
+        src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+</head>
+<body>
+    <div class="left">
+        <div class="leftDom">
+            <!-- <div class="dom_content"></div> -->
+        </div>
+    </div>
+    <div class="right">
+            <div class="rightDom">
+                    <!-- <div class="dom_content"></div> -->
+                </div>
+    </div>
+</body>
+<script>
+    var leftDom = document.getElementsByClassName('leftDom')[0],
+        rightDom = document.getElementsByClassName('rightDom')[0]
+        olOverView()
+        function olOverView(){
+            var myChart = echarts.init(leftDom);
+                    var app = {};
+                    option = null;
+                    option = {
+                        // backgroundColor: '#2c343c',
+                        title: {
+                            text: '在线人数总览',
+                            textAlign:'center',
+                            left: '50%'
+                        },
+                        legend: {
+                            show: true,
+                            x: 'center',
+                            y: '80%',
+                            itemHeight: 25,
+                            itemWidth: 35,
+                            itemGap: 4,
+                            data: [{
+                                name: '迎宾路',
+                                textStyle: {
+                                    fontSize: 16,
+                                    fontWeight: 'bold',
+                                    color: 'rgb(164,243,136)'
+                                }
+                            }, {
+                                name: '新城',
+                                textStyle: {
+                                    fontSize: 16,
+                                    fontWeight: 'bold',
+                                    color: 'rgb(69,184,239)'
+                                }
+                            }, {
+                                name: '长兴路',
+                                textStyle: {
+                                    fontSize: 16,
+                                    fontWeight: 'bold',
+                                    color: 'rgb(182,162,222)'
+                                }
+                            }, {
+                                name: '大河路',
+                                textStyle: {
+                                    fontSize: 16,
+                                    fontWeight: 'bold',
+                                    color: 'rgb(145,199,174)'
+                                }
+                            }, {
+                                name: '古荥镇',
+                                textStyle: {
+                                    fontSize: 16,
+                                    fontWeight: 'bold',
+                                    color: 'rgb(199,122,95)'
+                                }
+                            }, {
+                                name: '老鸭陈',
+                                textStyle: {
+                                    fontSize: 16,
+                                    fontWeight: 'bold',
+                                    color: 'rgb(255,143,179)'
+                                }
+                            }, {
+                                name: '刘寨',
+                                textStyle: {
+                                    fontSize: 16,
+                                    fontWeight: 'bold',
+                                    color: 'rgb(241,92,128)'
+                                }
+                            }, {
+                                name: '花园口',
+                                textStyle: {
+                                    fontSize: 16,
+                                    fontWeight: 'bold',
+                                    color: 'rgb(68,161,49)'
+                                }
+                            }]
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b} : {c} ({d}%)"
+                        },
+                        series: [
+                            {
+                                name: '访问来源',
+                                type: 'pie',
+                                radius: ['20%', '50%'],
+                                center: ['50%', '45%'],
+                                roseType: 'area',
+                                data: [
+                                    {
+                                        value: 235, name: '迎宾路',
+                                        itemStyle: {
+                                            normal: {
+                                                color: 'rgb(164,243,136)'
+                                            }
+                                        }
+                                    },
+                                    {
+                                        value: 274, name: '新城', itemStyle: {
+                                            normal: {
+                                                color: 'rgb(69,184,239)'
+                                            }
+                                        }
+                                    },
+                                    {
+                                        value: 310, name: '长兴路', itemStyle: {
+                                            normal: {
+                                                color: 'rgb(182,162,222)'
+                                            }
+                                        }
+                                    },
+                                    {
+                                        value: 335, name: '大河路', itemStyle: {
+                                            normal: {
+                                                color: 'rgb(145,199,174)'
+                                            }
+                                        }
+                                    },
+                                    {
+                                        value: 300, name: '古荥镇', itemStyle: {
+                                            normal: {
+                                                color: 'rgb(199,122,95)'
+                                            }
+                                        }
+                                    },
+                                    {
+                                        value: 235, name: '老鸭陈', itemStyle: {
+                                            normal: {
+                                                color: 'rgb(255,143,179)'
+                                            }
+                                        }
+                                    },
+                                    {
+                                        value: 265, name: '刘寨', itemStyle: {
+                                            normal: {
+                                                color: 'rgb(241,92,128)'
+                                            }
+                                        }
+                                    },
+                                    {
+                                        value: 344, name: '花园口', itemStyle: {
+                                            normal: {
+                                                color: 'rgb(68,161,49)'
+                                            }
+                                        }
+                                    }
+
+                                ],
+                                roseType: 'radius',
+                                label: {
+                                    normal: {
+                                        textStyle: {
+                                            fontSize: 10.05,
+                                            fontWeight: 469
+                                        }
+                                    }
+                                },
+                                itemStyle: {
+                                    normal: {
+                                        shadowBlur: 200,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)',
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)',
+                                        label: {
+                                            position: 'inner',
+                                            formatter: function (a) {
+                                                return a.data.value
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    };
+                    if (option && typeof option === "object") {
+                        myChart.setOption(option, true);
+                    }
+        }
+        
+   
+         
+</script>
+</html>
